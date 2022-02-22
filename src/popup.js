@@ -1,4 +1,5 @@
 const textArea = document.querySelector('.blacklist')
+const saved = document.querySelector('.saved')
 
 chrome.storage.sync.get(['blacklist'], ({ blacklist }) => {
   if (blacklist) {
@@ -14,4 +15,9 @@ document.querySelector('.save').addEventListener('click', () => {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, { action: 'save' });
   })
+
+  saved.className = 'saved show'
+  setTimeout(() => {
+    saved.className = 'saved'
+  }, 1000)
 })

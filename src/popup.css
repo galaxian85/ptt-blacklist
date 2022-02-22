@@ -1,0 +1,11 @@
+.saved {
+  color: white;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: .3s;
+  margin-left: 12px;
+}
+
+.saved.show {
+  color: red;
+}
