@@ -48,7 +48,7 @@ const main = () => {
       return blockedList.has(id) ? id : ''
     } else if (viewMode === 'article') {
       const firstChar = rowText.charAt(0)
-      if (firstChar !== '推' || firstChar !== '噓' || firstChar !== '→') return ''
+      if (firstChar !== '推' && firstChar && '噓' && firstChar !== '→') return ''
 
       const id = rowText.substring(2, rowText.indexOf(':'))
       return blockedList.has(id) ? id : ''
