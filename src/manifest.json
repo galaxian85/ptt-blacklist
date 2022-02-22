@@ -1,0 +1,17 @@
+{
+  "name": "PTT blacklist",
+  "description": "一個適用於 https://term.ptt.cc/ 的黑名單",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://term.ptt.cc/"],
+      "js": ["content-script.js"],
+      "css": ["blocker.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
