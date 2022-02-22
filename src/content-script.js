@@ -89,12 +89,9 @@ const main = () => {
   })
 }
 
-chrome.runtime.onMessage.addListener(
-  function(request) {
-    console.log(request)
-    refreshList()
-  }
-)
+chrome.runtime.onMessage.addListener(() => {
+  refreshList()
+})
 
 refreshList()
 main()
