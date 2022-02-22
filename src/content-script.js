@@ -5,6 +5,7 @@ const refreshList = () => {
     if (blacklist) {
       const parsed = JSON.parse(blacklist)
       if (Array.isArray(parsed)) {
+        blockedList.clear()
         parsed.forEach(id => {
           blockedList.add(id)
         })
