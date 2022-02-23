@@ -37,9 +37,10 @@ const main = () => {
     return 'other'
   }
 
-  const removeBlocker = (rowNumber) => {
-    const blockers = mainContainer.querySelectorAll(`.blocker-${rowNumber}`)
-    blockers.forEach(blocker => blocker.remove())
+  const hideBlocker = (rowNumber) => {
+    const blocker = mainContainer.querySelector(`.blocker-${rowNumber}`)
+    blocker.className = `blockers blocker-${rowNumber} hide`
+    blocker.textContent = ''
   }
 
   const getBlockedId = (rowText, rowNumber, viewMode) => {
@@ -63,30 +64,31 @@ const main = () => {
     const rowNumber = rowElement.getAttribute('srow')
     const viewMode = getViewMode()
     if (viewMode === 'other') {
-      return removeBlocker(rowNumber)
+      return hideBlocker(rowNumber)
     }
 
     const rowText = rowElement.textContent
     const blockedId = getBlockedId(rowText, rowNumber, viewMode)
 
     if (blockedId) {
-      if (mainContainer.querySelector(`.blocker-${rowNumber}`)) return
+      const blocker = mainContainer.querySelector(`.blocker-${rowNumber}`)
+      if (!blocker) return
 
-      const blocker = document.createElement('span')
       blocker.textContent = `    【 🚫 黑名單 id: ${blockedId} 】`
       blocker.className = `blockers blocker-${rowNumber}`
 
       const rect = rowElement.getBoundingClientRect()
       blocker.setAttribute('style', `top: ${rect.top}px; width: ${rect.width}px;`)
-
-      mainContainer.appendChild(blocker)
     } else {
-      removeBlocker(rowNumber)
+      hideBlocker(rowNumber)
     }
   }
 
   rows.forEach(row => {
     row.addEventListener('DOMSubtreeModified', listener)
+    const blocker = document.createElement('span')
+    blocker.className = `blockers blocker-${row.getAttribute('srow')} hide`
+    mainContainer.appendChild(blocker)
   })
 }
 
