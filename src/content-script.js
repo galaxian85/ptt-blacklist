@@ -46,7 +46,7 @@ const main = () => {
 
   const setBlockerPosition = (row, blocker) => {
     const { top, width } = row.getBoundingClientRect()
-    blocker.setAttribute('style', `top: ${top}px; width: ${width}px;`)
+    blocker.setAttribute('style', `top: ${top - 1}px; width: ${width}px;`)
   }
 
   const getBlockedId = (rowText, rowNumber, viewMode) => {
