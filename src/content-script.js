@@ -65,8 +65,6 @@ const main = () => {
 
   const listener = (e) => {
     const rowElement = e.currentTarget
-    if (!rowElement) return
-
     const rowNumber = parseInt(rowElement.getAttribute('srow'))
     const viewMode = getViewMode()
     if (viewMode === 'other') {
@@ -78,8 +76,6 @@ const main = () => {
 
     if (blockedId) {
       const blocker = blockers[rowNumber]
-      if (!blocker) return
-
       blocker.textContent = `    【 🚫 黑名單 id: ${blockedId} 】`
       blocker.className = `blockers blocker-${rowNumber}`
 
