@@ -3,7 +3,8 @@ const saved = document.querySelector('.saved')
 
 chrome.storage.sync.get(['blacklist'], ({ blacklist }) => {
   if (blacklist) {
-    textArea.value = JSON.parse(blacklist).join('\n')
+    textArea.value = `${JSON.parse(blacklist).join('\n')}\n`
+    textArea.scrollTop = textArea.scrollHeight
   }
 })
 
