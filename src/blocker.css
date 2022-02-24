@@ -1,4 +1,5 @@
 .blockers {
   position: absolute;
   background-color: black;
+  padding-top: 1px;
 }
