@@ -58,7 +58,7 @@ const main = () => {
       const firstChar = rowText.charAt(0)
       if (firstChar !== '推' && firstChar !== '噓' && firstChar !== '→') return ''
 
-      const id = rowText.substring(2, rowText.indexOf(':'))
+      const id = rowText.substring(2, rowText.indexOf(':')).trim()
       return blockedList.has(id) ? id : ''
     }
   }
