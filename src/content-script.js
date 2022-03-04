@@ -76,7 +76,8 @@ const main = () => {
 
     if (blockedId) {
       const blocker = blockers[rowNumber]
-      blocker.textContent = `    【 🚫 黑名單 id: ${blockedId} 】`
+      const firstChar = viewMode === 'board' && rowText.charAt(0) === '●' ? '●' : '  '
+      blocker.textContent = `${firstChar}  【 🚫 黑名單 id: ${blockedId} 】`
       blocker.className = `blockers blocker-${rowNumber}`
 
       setBlockerPosition(rowElement, blocker)
