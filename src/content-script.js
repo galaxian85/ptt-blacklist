@@ -51,7 +51,11 @@ const main = () => {
 
   const getBlockedId = (rowText, rowNumber, viewMode) => {
     if (viewMode === 'board' && (rowNumber > 2 || rowNumber < 23)) {
-      const [begin, end] = rowText.charAt(0) === '●' ? [16, 28] : [17, 29]
+      let [begin, end] = rowText.charAt(0) === '●' ? [16, 28] : [17, 29]
+      if (rowText.charAt(begin - 8) === '爆') {
+        begin--
+        end--
+      }
       let id = rowText.substring(begin, end).trim()
       return blockedList.has(id) ? id : ''
     } else if (viewMode === 'article') {
